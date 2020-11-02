@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  mc1: 
+    image: mariadb:10.5
+    ports:
+      - 4567
+  mc2:
+    image: mariadb:10.5
+    ports:
+      - 5678
+  mc3:
+    image: mariadb:10.5
+    ports:
+      - 6789

@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  maria-master:
+    image: mariadb:10.5
+    ports:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./backups:/backups
+      - ./config/master.cnf:/etc/mysql/mariadb.conf.d/master.cnf
+      - ./scripts:/scripts
+  maria-slave:
+    image: mariadb:10.5
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./maria:/var/lib/mysql
+      - ./backups:/backups
+      - ./scripts:/scripts
